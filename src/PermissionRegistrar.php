@@ -152,7 +152,7 @@ class PermissionRegistrar
 
     /**
      * Clear class permissions.
-     * This is only intended to be called by the PermissionServiceProvider on boot,
+     * This is only intended to be called by the EasyRoleServiceProvider on boot,
      * so that long-running instances like Swoole don't keep old data in memory.
      */
     public function clearClassPermissions()

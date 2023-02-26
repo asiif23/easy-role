@@ -92,45 +92,45 @@ class EasyRoleServiceProvider extends ServiceProvider
     protected function registerBladeExtensions($bladeCompiler)
     {
         $bladeCompiler->directive('role', function ($arguments) {
-            return "<?php if(\\Asiifdev\\EasyRole\\PermissionServiceProvider::bladeMethodWrapper('hasRole', {$arguments})): ?>";
+            return "<?php if(\\Asiifdev\\EasyRole\\EasyRoleServiceProvider::bladeMethodWrapper('hasRole', {$arguments})): ?>";
         });
         $bladeCompiler->directive('elserole', function ($arguments) {
-            return "<?php elseif(\\Asiifdev\\EasyRole\\PermissionServiceProvider::bladeMethodWrapper('hasRole', {$arguments})): ?>";
+            return "<?php elseif(\\Asiifdev\\EasyRole\\EasyRoleServiceProvider::bladeMethodWrapper('hasRole', {$arguments})): ?>";
         });
         $bladeCompiler->directive('endrole', function () {
             return '<?php endif; ?>';
         });
 
         $bladeCompiler->directive('hasrole', function ($arguments) {
-            return "<?php if(\\Asiifdev\\EasyRole\\PermissionServiceProvider::bladeMethodWrapper('hasRole', {$arguments})): ?>";
+            return "<?php if(\\Asiifdev\\EasyRole\\EasyRoleServiceProvider::bladeMethodWrapper('hasRole', {$arguments})): ?>";
         });
         $bladeCompiler->directive('endhasrole', function () {
             return '<?php endif; ?>';
         });
 
         $bladeCompiler->directive('hasanyrole', function ($arguments) {
-            return "<?php if(\\Asiifdev\\EasyRole\\PermissionServiceProvider::bladeMethodWrapper('hasAnyRole', {$arguments})): ?>";
+            return "<?php if(\\Asiifdev\\EasyRole\\EasyRoleServiceProvider::bladeMethodWrapper('hasAnyRole', {$arguments})): ?>";
         });
         $bladeCompiler->directive('endhasanyrole', function () {
             return '<?php endif; ?>';
         });
 
         $bladeCompiler->directive('hasallroles', function ($arguments) {
-            return "<?php if(\\Asiifdev\\EasyRole\\PermissionServiceProvider::bladeMethodWrapper('hasAllRoles', {$arguments})): ?>";
+            return "<?php if(\\Asiifdev\\EasyRole\\EasyRoleServiceProvider::bladeMethodWrapper('hasAllRoles', {$arguments})): ?>";
         });
         $bladeCompiler->directive('endhasallroles', function () {
             return '<?php endif; ?>';
         });
 
         $bladeCompiler->directive('unlessrole', function ($arguments) {
-            return "<?php if(! \\Asiifdev\\EasyRole\\PermissionServiceProvider::bladeMethodWrapper('hasRole', {$arguments})): ?>";
+            return "<?php if(! \\Asiifdev\\EasyRole\\EasyRoleServiceProvider::bladeMethodWrapper('hasRole', {$arguments})): ?>";
         });
         $bladeCompiler->directive('endunlessrole', function () {
             return '<?php endif; ?>';
         });
 
         $bladeCompiler->directive('hasexactroles', function ($arguments) {
-            return "<?php if(\\Asiifdev\\EasyRole\\PermissionServiceProvider::bladeMethodWrapper('hasExactRoles', {$arguments})): ?>";
+            return "<?php if(\\Asiifdev\\EasyRole\\EasyRoleServiceProvider::bladeMethodWrapper('hasExactRoles', {$arguments})): ?>";
         });
         $bladeCompiler->directive('endhasexactroles', function () {
             return '<?php endif; ?>';
