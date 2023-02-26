@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Permission;
+namespace Asiifdev\EasyRole;
 
 use Asiifdev\EasyRole\Contracts\Permission;
 use Asiifdev\EasyRole\Contracts\Role;
