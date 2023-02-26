@@ -2,10 +2,10 @@
 
 namespace Asiifdev\EasyRole\Commands;
 
-use Illuminate\Console\Command;
 use Asiifdev\EasyRole\Contracts\Permission as PermissionContract;
 use Asiifdev\EasyRole\Contracts\Role as RoleContract;
 use Asiifdev\EasyRole\PermissionRegistrar;
+use Illuminate\Console\Command;
 
 class CreateRole extends Command
 {

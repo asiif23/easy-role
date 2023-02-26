@@ -2,10 +2,6 @@
 
 namespace Asiifdev\EasyRole\Traits;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 use Asiifdev\EasyRole\Contracts\Permission;
 use Asiifdev\EasyRole\Contracts\Role;
 use Asiifdev\EasyRole\Contracts\Wildcard;
@@ -16,6 +12,10 @@ use Asiifdev\EasyRole\Exceptions\WildcardPermissionNotImplementsContract;
 use Asiifdev\EasyRole\Guard;
 use Asiifdev\EasyRole\PermissionRegistrar;
 use Asiifdev\EasyRole\WildcardPermission;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 
 trait HasPermissions
 {
@@ -90,9 +90,7 @@ trait HasPermissions
     /**
      * Scope the model query to certain permissions only.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @param  string|int|array|\Asiifdev\EasyRole\Contracts\Permission|\Illuminate\Support\Collection  $permissions
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopePermission(Builder $query, $permissions): Builder
     {
@@ -120,7 +118,6 @@ trait HasPermissions
 
     /**
      * @param  string|int|array|\Asiifdev\EasyRole\Contracts\Permission|\Illuminate\Support\Collection  $permissions
-     * @return array
      *
      * @throws \Asiifdev\EasyRole\Exceptions\PermissionDoesNotExist
      */
@@ -178,7 +175,6 @@ trait HasPermissions
      *
      * @param  string|int|\Asiifdev\EasyRole\Contracts\Permission  $permission
      * @param  string|null  $guardName
-     * @return bool
      *
      * @throws PermissionDoesNotExist
      */
@@ -198,7 +194,6 @@ trait HasPermissions
      *
      * @param  string|int|\Asiifdev\EasyRole\Contracts\Permission  $permission
      * @param  string|null  $guardName
-     * @return bool
      */
     protected function hasWildcardPermission($permission, $guardName = null): bool
     {
@@ -238,7 +233,6 @@ trait HasPermissions
      *
      * @param  string|int|\Asiifdev\EasyRole\Contracts\Permission  $permission
      * @param  string|null  $guardName
-     * @return bool
      */
     public function checkPermissionTo($permission, $guardName = null): bool
     {
@@ -253,7 +247,6 @@ trait HasPermissions
      * Determine if the model has any of the given permissions.
      *
      * @param  string|int|array|\Asiifdev\EasyRole\Contracts\Permission|\Illuminate\Support\Collection  ...$permissions
-     * @return bool
      */
     public function hasAnyPermission(...$permissions): bool
     {
@@ -272,7 +265,6 @@ trait HasPermissions
      * Determine if the model has all of the given permissions.
      *
      * @param  string|int|array|\Asiifdev\EasyRole\Contracts\Permission|\Illuminate\Support\Collection  ...$permissions
-     * @return bool
      */
     public function hasAllPermissions(...$permissions): bool
     {
@@ -289,9 +281,6 @@ trait HasPermissions
 
     /**
      * Determine if the model has, via roles, the given permission.
-     *
-     * @param  \Asiifdev\EasyRole\Contracts\Permission  $permission
-     * @return bool
      */
     protected function hasPermissionViaRole(Permission $permission): bool
     {
@@ -302,7 +291,6 @@ trait HasPermissions
      * Determine if the model has the given permission.
      *
      * @param  string|int|\Asiifdev\EasyRole\Contracts\Permission  $permission
-     * @return bool
      *
      * @throws PermissionDoesNotExist
      */
@@ -505,7 +493,6 @@ trait HasPermissions
      * Check if the model has All of the requested Direct permissions.
      *
      * @param  string|int|array|\Asiifdev\EasyRole\Contracts\Permission|\Illuminate\Support\Collection  ...$permissions
-     * @return bool
      */
     public function hasAllDirectPermissions(...$permissions): bool
     {
@@ -524,7 +511,6 @@ trait HasPermissions
      * Check if the model has Any of the requested Direct permissions.
      *
      * @param  string|int|array|\Asiifdev\EasyRole\Contracts\Permission|\Illuminate\Support\Collection  ...$permissions
-     * @return bool
      */
     public function hasAnyDirectPermission(...$permissions): bool
     {

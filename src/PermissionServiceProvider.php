@@ -2,14 +2,14 @@
 
 namespace Spatie\Permission;
 
+use Asiifdev\EasyRole\Contracts\Permission as PermissionContract;
+use Asiifdev\EasyRole\Contracts\Role as RoleContract;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
-use Asiifdev\EasyRole\Contracts\Permission as PermissionContract;
-use Asiifdev\EasyRole\Contracts\Role as RoleContract;
 
 class PermissionServiceProvider extends ServiceProvider
 {
@@ -162,8 +162,6 @@ class PermissionServiceProvider extends ServiceProvider
 
     /**
      * Returns existing migration file if found, else uses the current timestamp.
-     *
-     * @return string
      */
     protected function getMigrationFileName($migrationFileName): string
     {

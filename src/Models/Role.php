@@ -2,8 +2,6 @@
 
 namespace Asiifdev\EasyRole\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Asiifdev\EasyRole\Contracts\Role as RoleContract;
 use Asiifdev\EasyRole\Exceptions\GuardDoesNotMatch;
 use Asiifdev\EasyRole\Exceptions\RoleAlreadyExists;
@@ -12,6 +10,8 @@ use Asiifdev\EasyRole\Guard;
 use Asiifdev\EasyRole\PermissionRegistrar;
 use Asiifdev\EasyRole\Traits\HasPermissions;
 use Asiifdev\EasyRole\Traits\RefreshesPermissionCache;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @property int $id
@@ -90,7 +90,6 @@ class Role extends Model implements RoleContract
     /**
      * Find a role by its name and guard name.
      *
-     * @param  string  $name
      * @param  string|null  $guardName
      * @return \Asiifdev\EasyRole\Contracts\Role|\Asiifdev\EasyRole\Models\Role
      *
@@ -112,7 +111,6 @@ class Role extends Model implements RoleContract
     /**
      * Find a role by its id (and optionally guardName).
      *
-     * @param  int  $id
      * @param  string|null  $guardName
      * @return \Asiifdev\EasyRole\Contracts\Role|\Asiifdev\EasyRole\Models\Role
      */
@@ -132,7 +130,6 @@ class Role extends Model implements RoleContract
     /**
      * Find or create role by its name (and optionally guardName).
      *
-     * @param  string  $name
      * @param  string|null  $guardName
      * @return \Asiifdev\EasyRole\Contracts\Role|\Asiifdev\EasyRole\Models\Role
      */
@@ -172,7 +169,6 @@ class Role extends Model implements RoleContract
      * Determine if the user may perform the given permission.
      *
      * @param  string|Permission  $permission
-     * @return bool
      *
      * @throws \Asiifdev\EasyRole\Exceptions\GuardDoesNotMatch
      */

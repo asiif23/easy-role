@@ -2,8 +2,8 @@
 
 namespace Asiifdev\EasyRole\Middlewares;
 
-use Closure;
 use Asiifdev\EasyRole\Exceptions\UnauthorizedException;
+use Closure;
 
 class PermissionMiddleware
 {

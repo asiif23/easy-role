@@ -2,8 +2,8 @@
 
 namespace Asiifdev\EasyRole\Commands;
 
-use Illuminate\Console\Command;
 use Asiifdev\EasyRole\PermissionRegistrar;
+use Illuminate\Console\Command;
 
 class CacheReset extends Command
 {
