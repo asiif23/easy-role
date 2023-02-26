@@ -36,7 +36,7 @@ class EasyRoleServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/permission.php',
+            __DIR__.'/../config/easy-role.php',
             'permission'
         );
 
@@ -53,7 +53,7 @@ class EasyRoleServiceProvider extends ServiceProvider
         }
 
         $this->publishes([
-            __DIR__.'/../config/permission.php' => config_path('permission.php'),
+            __DIR__.'/../config/easy-role.php' => config_path('permission.php'),
         ], 'permission-config');
 
         $this->publishes([
