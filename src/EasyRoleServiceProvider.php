@@ -23,7 +23,7 @@ class EasyRoleServiceProvider extends ServiceProvider
 
         $this->registerModelBindings();
 
-        if ($this->app->config['easy-role.register_permission_check_method']) {
+        if ($this->app->config['easyrole.register_permission_check_method']) {
             $permissionLoader->clearClassPermissions();
             $permissionLoader->registerPermissions();
         }
@@ -36,7 +36,7 @@ class EasyRoleServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/easy-role.php',
+            __DIR__.'/../config/easyrole.php',
             'permission'
         );
 
@@ -53,7 +53,7 @@ class EasyRoleServiceProvider extends ServiceProvider
         }
 
         $this->publishes([
-            __DIR__.'/../config/easy-role.php' => config_path('permission.php'),
+            __DIR__.'/../config/easyrole.php' => config_path('permission.php'),
         ], 'permission-config');
 
         $this->publishes([
@@ -74,13 +74,13 @@ class EasyRoleServiceProvider extends ServiceProvider
 
     protected function registerModelBindings()
     {
-        $config = $this->app->config['easy-role.models'];
+        $config = $this->app->config['easyrole.models'];
 
         if (! $config) {
             return;
         }
 
-        $this->app->bind(PermissionContract::class, $config['easy-role']);
+        $this->app->bind(PermissionContract::class, $config['easyrole']);
         $this->app->bind(RoleContract::class, $config['role']);
     }
 

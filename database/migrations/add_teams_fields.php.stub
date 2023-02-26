@@ -15,18 +15,18 @@ class AddTeamsFields extends Migration
      */
     public function up()
     {
-        $teams = config('easy-role.teams');
-        $tableNames = config('easy-role.table_names');
-        $columnNames = config('easy-role.column_names');
+        $teams = config('easyrole.teams');
+        $tableNames = config('easyrole.table_names');
+        $columnNames = config('easyrole.column_names');
 
         if (! $teams) {
             return;
         }
         if (empty($tableNames)) {
-            throw new \Exception('Error: config/easy-role.php not loaded. Run [php artisan config:clear] and try again.');
+            throw new \Exception('Error: config/easyrole.php not loaded. Run [php artisan config:clear] and try again.');
         }
         if (empty($columnNames['team_foreign_key'] ?? null)) {
-            throw new \Exception('Error: team_foreign_key on config/easy-role.php not loaded. Run [php artisan config:clear] and try again.');
+            throw new \Exception('Error: team_foreign_key on config/easyrole.php not loaded. Run [php artisan config:clear] and try again.');
         }
 
         if (! Schema::hasColumn($tableNames['roles'], $columnNames['team_foreign_key'])) {
@@ -78,8 +78,8 @@ class AddTeamsFields extends Migration
         }
 
         app('cache')
-            ->store(config('easy-role.cache.store') != 'default' ? config('easy-role.cache.store') : null)
-            ->forget(config('easy-role.cache.key'));
+            ->store(config('easyrole.cache.store') != 'default' ? config('easyrole.cache.store') : null)
+            ->forget(config('easyrole.cache.key'));
     }
 
     /**

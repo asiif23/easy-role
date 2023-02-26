@@ -46,10 +46,10 @@ trait HasRoles
     public function roles(): BelongsToMany
     {
         $relation = $this->morphToMany(
-            config('easy-role.models.role'),
+            config('easyrole.models.role'),
             'model',
-            config('easy-role.table_names.model_has_roles'),
-            config('easy-role.column_names.model_morph_key'),
+            config('easyrole.table_names.model_has_roles'),
+            config('easyrole.column_names.model_morph_key'),
             PermissionRegistrar::$pivotRole
         );
 
@@ -59,7 +59,7 @@ trait HasRoles
 
         return $relation->wherePivot(PermissionRegistrar::$teamsKey, getPermissionsTeamId())
             ->where(function ($q) {
-                $teamField = config('easy-role.table_names.roles').'.'.PermissionRegistrar::$teamsKey;
+                $teamField = config('easyrole.table_names.roles').'.'.PermissionRegistrar::$teamsKey;
                 $q->whereNull($teamField)->orWhere($teamField, getPermissionsTeamId());
             });
     }
@@ -89,7 +89,7 @@ trait HasRoles
         return $query->whereHas('roles', function (Builder $subQuery) use ($roles) {
             $roleClass = $this->getRoleClass();
             $key = (new $roleClass())->getKeyName();
-            $subQuery->whereIn(config('easy-role.table_names.roles').".$key", \array_column($roles, $key));
+            $subQuery->whereIn(config('easyrole.table_names.roles').".$key", \array_column($roles, $key));
         });
     }
 

@@ -26,7 +26,7 @@ composer require asiifdev/easy-role
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --provider="Asiifdev\EasyRole\PermissionServiceProvider"
+php artisan vendor:publish --provider="Asiifdev\EasyRole\EasyRoleServiceProvider"
 php artisan migrate
 ```
 

@@ -38,7 +38,7 @@ class Role extends Model implements RoleContract
 
     public function getTable()
     {
-        return config('easy-role.table_names.roles', parent::getTable());
+        return config('easyrole.table_names.roles', parent::getTable());
     }
 
     public static function create(array $attributes = [])
@@ -66,8 +66,8 @@ class Role extends Model implements RoleContract
     public function permissions(): BelongsToMany
     {
         return $this->belongsToMany(
-            config('easy-role.models.permission'),
-            config('easy-role.table_names.role_has_permissions'),
+            config('easyrole.models.permission'),
+            config('easyrole.table_names.role_has_permissions'),
             PermissionRegistrar::$pivotRole,
             PermissionRegistrar::$pivotPermission
         );
@@ -81,9 +81,9 @@ class Role extends Model implements RoleContract
         return $this->morphedByMany(
             getModelForGuard($this->attributes['guard_name'] ?? config('auth.defaults.guard')),
             'model',
-            config('easy-role.table_names.model_has_roles'),
+            config('easyrole.table_names.model_has_roles'),
             PermissionRegistrar::$pivotRole,
-            config('easy-role.column_names.model_morph_key')
+            config('easyrole.column_names.model_morph_key')
         );
     }
 
@@ -174,7 +174,7 @@ class Role extends Model implements RoleContract
      */
     public function hasPermissionTo($permission): bool
     {
-        if (config('easy-role.enable_wildcard_permission', false)) {
+        if (config('easyrole.enable_wildcard_permission', false)) {
             return $this->hasWildcardPermission($permission, $this->getDefaultGuardName());
         }
 

@@ -38,7 +38,7 @@ class Permission extends Model implements PermissionContract
 
     public function getTable()
     {
-        return config('easy-role.table_names.permissions', parent::getTable());
+        return config('easyrole.table_names.permissions', parent::getTable());
     }
 
     public static function create(array $attributes = [])
@@ -60,8 +60,8 @@ class Permission extends Model implements PermissionContract
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(
-            config('easy-role.models.role'),
-            config('easy-role.table_names.role_has_permissions'),
+            config('easyrole.models.role'),
+            config('easyrole.table_names.role_has_permissions'),
             PermissionRegistrar::$pivotPermission,
             PermissionRegistrar::$pivotRole
         );
@@ -75,9 +75,9 @@ class Permission extends Model implements PermissionContract
         return $this->morphedByMany(
             getModelForGuard($this->attributes['guard_name'] ?? config('auth.defaults.guard')),
             'model',
-            config('easy-role.table_names.model_has_permissions'),
+            config('easyrole.table_names.model_has_permissions'),
             PermissionRegistrar::$pivotPermission,
-            config('easy-role.column_names.model_morph_key')
+            config('easyrole.column_names.model_morph_key')
         );
     }
 

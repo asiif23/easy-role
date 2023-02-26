@@ -20,7 +20,7 @@ class Show extends Command
     {
         $permissionClass = app(PermissionContract::class);
         $roleClass = app(RoleContract::class);
-        $team_key = config('easy-role.column_names.team_foreign_key');
+        $team_key = config('easyrole.column_names.team_foreign_key');
 
         $style = $this->argument('style') ?? 'default';
         $guard = $this->argument('guard');
@@ -36,7 +36,7 @@ class Show extends Command
 
             $roles = $roleClass::whereGuardName($guard)
                 ->with('permissions')
-                ->when(config('easy-role.teams'), function ($q) use ($team_key) {
+                ->when(config('easyrole.teams'), function ($q) use ($team_key) {
                     $q->orderBy($team_key);
                 })
                 ->orderBy('name')->get()->mapWithKeys(function ($role) use ($team_key) {
@@ -51,7 +51,7 @@ class Show extends Command
                 })->prepend($permission);
             });
 
-            if (config('easy-role.teams')) {
+            if (config('easyrole.teams')) {
                 $teams = $roles->groupBy($team_key)->values()->map(function ($group, $id) {
                     return new TableCell('Team ID: '.($id ?: 'NULL'), ['colspan' => $group->count()]);
                 });
@@ -59,7 +59,7 @@ class Show extends Command
 
             $this->table(
                 array_merge([
-                    config('easy-role.teams') ? $teams->prepend('')->toArray() : [],
+                    config('easyrole.teams') ? $teams->prepend('')->toArray() : [],
                     $roles->keys()->map(function ($val) {
                         $name = explode('_', $val);
 

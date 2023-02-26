@@ -56,8 +56,8 @@ trait HasPermissions
 
         $this->wildcardClass = false;
 
-        if (config('easy-role.enable_wildcard_permission', false)) {
-            $this->wildcardClass = config('easy-role.wildcard_permission', WildcardPermission::class);
+        if (config('easyrole.enable_wildcard_permission', false)) {
+            $this->wildcardClass = config('easyrole.wildcard_permission', WildcardPermission::class);
 
             if (! is_subclass_of($this->wildcardClass, Wildcard::class)) {
                 throw WildcardPermissionNotImplementsContract::create();
@@ -73,10 +73,10 @@ trait HasPermissions
     public function permissions(): BelongsToMany
     {
         $relation = $this->morphToMany(
-            config('easy-role.models.permission'),
+            config('easyrole.models.permission'),
             'model',
-            config('easy-role.table_names.model_has_permissions'),
-            config('easy-role.column_names.model_morph_key'),
+            config('easyrole.table_names.model_has_permissions'),
+            config('easyrole.column_names.model_morph_key'),
             PermissionRegistrar::$pivotPermission
         );
 
@@ -104,13 +104,13 @@ trait HasPermissions
             $query->whereHas('permissions', function (Builder $subQuery) use ($permissions) {
                 $permissionClass = $this->getPermissionClass();
                 $key = (new $permissionClass())->getKeyName();
-                $subQuery->whereIn(config('easy-role.table_names.permissions').".$key", \array_column($permissions, $key));
+                $subQuery->whereIn(config('easyrole.table_names.permissions').".$key", \array_column($permissions, $key));
             });
             if (count($rolesWithPermissions) > 0) {
                 $query->orWhereHas('roles', function (Builder $subQuery) use ($rolesWithPermissions) {
                     $roleClass = $this->getRoleClass();
                     $key = (new $roleClass())->getKeyName();
-                    $subQuery->whereIn(config('easy-role.table_names.roles').".$key", \array_column($rolesWithPermissions, $key));
+                    $subQuery->whereIn(config('easyrole.table_names.roles').".$key", \array_column($rolesWithPermissions, $key));
                 });
             }
         });

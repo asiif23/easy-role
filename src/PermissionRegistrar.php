@@ -63,8 +63,8 @@ class PermissionRegistrar
      */
     public function __construct(CacheManager $cacheManager)
     {
-        $this->permissionClass = config('easy-role.models.permission');
-        $this->roleClass = config('easy-role.models.role');
+        $this->permissionClass = config('easyrole.models.permission');
+        $this->roleClass = config('easyrole.models.role');
 
         $this->cacheManager = $cacheManager;
         $this->initializeCache();
@@ -72,15 +72,15 @@ class PermissionRegistrar
 
     public function initializeCache()
     {
-        self::$cacheExpirationTime = config('easy-role.cache.expiration_time') ?: \DateInterval::createFromDateString('24 hours');
+        self::$cacheExpirationTime = config('easyrole.cache.expiration_time') ?: \DateInterval::createFromDateString('24 hours');
 
-        self::$teams = config('easy-role.teams', false);
-        self::$teamsKey = config('easy-role.column_names.team_foreign_key');
+        self::$teams = config('easyrole.teams', false);
+        self::$teamsKey = config('easyrole.column_names.team_foreign_key');
 
-        self::$cacheKey = config('easy-role.cache.key');
+        self::$cacheKey = config('easyrole.cache.key');
 
-        self::$pivotRole = config('easy-role.column_names.role_pivot_key') ?: 'role_id';
-        self::$pivotPermission = config('easy-role.column_names.permission_pivot_key') ?: 'permission_id';
+        self::$pivotRole = config('easyrole.column_names.role_pivot_key') ?: 'role_id';
+        self::$pivotPermission = config('easyrole.column_names.permission_pivot_key') ?: 'permission_id';
 
         $this->cache = $this->getCacheStoreFromConfig();
     }
@@ -89,7 +89,7 @@ class PermissionRegistrar
     {
         // the 'default' fallback here is from the permission.php config file,
         // where 'default' means to use config(cache.default)
-        $cacheDriver = config('easy-role.cache.store', 'default');
+        $cacheDriver = config('easyrole.cache.store', 'default');
 
         // when 'default' is specified, no action is required since we already have the default instance
         if ($cacheDriver === 'default') {
@@ -299,7 +299,7 @@ class PermissionRegistrar
      */
     private function getSerializedPermissionsForCache()
     {
-        $this->except = config('easy-role.cache.column_names_except', ['created_at', 'updated_at', 'deleted_at']);
+        $this->except = config('easyrole.cache.column_names_except', ['created_at', 'updated_at', 'deleted_at']);
 
         $permissions = $this->getPermissionsWithRoles()
             ->map(function ($permission) {
