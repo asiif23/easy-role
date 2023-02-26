@@ -2,10 +2,10 @@
 
 namespace Asiifdev\EasyRole\Commands;
 
-use Illuminate\Console\Command;
-use Illuminate\Support\Collection;
 use Asiifdev\EasyRole\Contracts\Permission as PermissionContract;
 use Asiifdev\EasyRole\Contracts\Role as RoleContract;
+use Illuminate\Console\Command;
+use Illuminate\Support\Collection;
 use Symfony\Component\Console\Helper\TableCell;
 
 class Show extends Command

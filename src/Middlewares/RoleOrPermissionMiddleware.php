@@ -2,9 +2,9 @@
 
 namespace Asiifdev\EasyRole\Middlewares;
 
+use Asiifdev\EasyRole\Exceptions\UnauthorizedException;
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use Asiifdev\EasyRole\Exceptions\UnauthorizedException;
 
 class RoleOrPermissionMiddleware
 {

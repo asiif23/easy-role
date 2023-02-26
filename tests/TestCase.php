@@ -2,9 +2,9 @@
 
 namespace Asiifdev\EasyRole\Tests;
 
+use Asiifdev\EasyRole\EasyRoleServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Asiifdev\EasyRole\EasyRoleServiceProvider;
 
 class TestCase extends Orchestra
 {

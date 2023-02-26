@@ -2,13 +2,13 @@
 
 namespace Asiifdev\EasyRole\Traits;
 
+use Asiifdev\EasyRole\Contracts\Permission;
+use Asiifdev\EasyRole\Contracts\Role;
+use Asiifdev\EasyRole\PermissionRegistrar;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Asiifdev\EasyRole\Contracts\Permission;
-use Asiifdev\EasyRole\Contracts\Role;
-use Asiifdev\EasyRole\PermissionRegistrar;
 
 trait HasRoles
 {
@@ -67,10 +67,8 @@ trait HasRoles
     /**
      * Scope the model query to certain roles only.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @param  string|int|array|\Asiifdev\EasyRole\Contracts\Role|\Illuminate\Support\Collection  $roles
      * @param  string  $guard
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeRole(Builder $query, $roles, $guard = null): Builder
     {
@@ -184,8 +182,6 @@ trait HasRoles
      * Determine if the model has (one of) the given role(s).
      *
      * @param  string|int|array|\Asiifdev\EasyRole\Contracts\Role|\Illuminate\Support\Collection  $roles
-     * @param  string|null  $guard
-     * @return bool
      */
     public function hasRole($roles, string $guard = null): bool
     {
@@ -233,7 +229,6 @@ trait HasRoles
      * Alias to hasRole() but without Guard controls
      *
      * @param  string|int|array|\Asiifdev\EasyRole\Contracts\Role|\Illuminate\Support\Collection  $roles
-     * @return bool
      */
     public function hasAnyRole(...$roles): bool
     {
@@ -244,8 +239,6 @@ trait HasRoles
      * Determine if the model has all of the given role(s).
      *
      * @param  string|array|\Asiifdev\EasyRole\Contracts\Role|\Illuminate\Support\Collection  $roles
-     * @param  string|null  $guard
-     * @return bool
      */
     public function hasAllRoles($roles, string $guard = null): bool
     {
@@ -280,8 +273,6 @@ trait HasRoles
      * Determine if the model has exactly all of the given role(s).
      *
      * @param  string|array|\Asiifdev\EasyRole\Contracts\Role|\Illuminate\Support\Collection  $roles
-     * @param  string|null  $guard
-     * @return bool
      */
     public function hasExactRoles($roles, string $guard = null): bool
     {
