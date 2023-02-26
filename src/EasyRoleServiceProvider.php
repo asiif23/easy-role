@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 
-class PermissionServiceProvider extends ServiceProvider
+class EasyRoleServiceProvider extends ServiceProvider
 {
     public function boot(PermissionRegistrar $permissionLoader)
     {
