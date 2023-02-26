@@ -53,8 +53,8 @@ class EasyRoleServiceProvider extends ServiceProvider
         }
 
         $this->publishes([
-            __DIR__.'/../config/easyrole.php' => config_path('permission.php'),
-        ], 'permission-config');
+            __DIR__.'/../config/easyrole.php' => config_path('easyrole.php'),
+        ], 'easyrole-config');
 
         $this->publishes([
             __DIR__.'/../database/migrations/create_permission_tables.php.stub' => $this->getMigrationFileName('create_permission_tables.php'),
@@ -80,7 +80,7 @@ class EasyRoleServiceProvider extends ServiceProvider
             return;
         }
 
-        $this->app->bind(PermissionContract::class, $config['easyrole']);
+        $this->app->bind(PermissionContract::class, $config['permission']);
         $this->app->bind(RoleContract::class, $config['role']);
     }
 
