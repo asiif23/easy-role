@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "asiifdev/easy-role",
+    "description": "Ini adalah Package untuk memudahkan dalam Management Role dan Permissions di Laravel",
     "keywords": [
-        ":vendor_name",
+        "asiifdev",
         "laravel",
-        ":package_slug"
+        "easy-role"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/asiifdev/easy-role",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "asiifdev",
+            "email": "asiif.anwar3@gmail.com",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Asiifdev\\EasyRole\\": "src",
+            "Asiifdev\\EasyRole\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Asiifdev\\EasyRole\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -61,10 +61,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Asiifdev\\EasyRole\\EasyRoleServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "EasyRole": "Asiifdev\\EasyRole\\Facades\\EasyRole"
             }
         }
     },
