@@ -59,6 +59,10 @@ class EasyRoleServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../database/migrations/create_permission_tables.php.stub' => $this->getMigrationFileName('create_permission_tables.php'),
         ], 'permission-migrations');
+
+        $this->publishes([
+            __DIR__.'/../database/seeders/RoleSeeder.php' => base_path('/database/seeders/RoleSeeder.php'),
+        ], 'role-seeders');
     }
 
     protected function registerCommands()
