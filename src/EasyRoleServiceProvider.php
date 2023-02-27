@@ -73,6 +73,7 @@ class EasyRoleServiceProvider extends ServiceProvider
             Commands\CreatePermission::class,
             Commands\Show::class,
             Commands\UpgradeForTeams::class,
+            Commands\BuatRole::class,
         ]);
     }
 

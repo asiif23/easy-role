@@ -9,7 +9,7 @@ use Illuminate\Console\Command;
 
 class CreateRole extends Command
 {
-    protected $signature = 'easy-role:buat-role
+    protected $signature = 'easy-role:create-role
         {name : The name of the role}
         {guard? : The name of the guard}
         {permissions? : A list of permissions to assign to the role, separated by | }
